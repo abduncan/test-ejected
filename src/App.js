@@ -5,9 +5,9 @@ import styles from './App.css';
 class App extends Component {
   render() {
     return (
-      <div className={styles.app}>
-        <div className={styles.appHeader}>
-          <img src={logo} className={styles.appLogo} alt="logo" />
+      <div className="app">
+        <div className="appHeader">
+          <img src={logo} className="appLogo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
