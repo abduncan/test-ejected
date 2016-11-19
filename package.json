@@ -5,10 +5,14 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "build_ejected": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js --progress --colors",
+    "start_ejected": "NODE_ENV=development node ./src/app.js",
+    "start_ejected_prod": "NODE_ENV=production node ./src/app.js"
   },
   "dependencies": {
     "dotenv": "2.0.0",
+    "express": "4.14.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-router": "3.0.0"
@@ -56,6 +60,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
+    "webpack-hot-middleware": "2.13.2",
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "1.0.0"
   },

@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import styles from './App.css';
+const Server = require('./server.js')
+const port = (process.env.PORT || 8080)
+const app = Server.app()
 
-class App extends Component {
-  render() {
-    return (
-      <div className={styles.app}>
-        <div className={styles.appHeader}>
-          <img src={logo} className={styles.appLogo} alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack')
+  const webpackDevMiddleware = require('webpack-dev-middleware')
+  const webpackHotMiddleware = require('webpack-hot-middleware')
+  const config = require('../config/webpack.config.dev.js')
+  const compiler = webpack(config)
+
+  app.use(webpackHotMiddleware(compiler))
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }))
 }
 
-export default App;
+app.listen(port)
+console.log(`Listening at http://localhost:${port}`)
